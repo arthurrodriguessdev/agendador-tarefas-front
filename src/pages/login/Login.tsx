@@ -1,12 +1,11 @@
-import './login.css';
+import './login.css'
+import {Button} from '../../components/Button.tsx'
 
 export function Login(){
     return (
         <div className="login-container">
             <div className="left-side">
-                <div>
-                    <h1>TaskMaster</h1>
-                </div>
+                <h1>TaskMaster</h1>
 
                 <div className="left-content">
                     <h2>Tudo que você precisa para um dia produtivo!</h2>
@@ -39,10 +38,10 @@ export function Login(){
                                     <label>Senha:</label>
                                     <input type="password"/>
                                 </div>
+                                <Button typeButton="submit">Entrar</Button>
                             </div>
                         </form>
                     </div>
-
                 </div>
             </div>
         </div>
