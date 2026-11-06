@@ -1,8 +1,9 @@
-import { Login } from './pages/login/Login.tsx'
+import { routes } from "./routes/AppRouter"
+import { RouterProvider } from "react-router-dom"
 
 function App() {
   return (
-    <Login/>  
+    <RouterProvider router={routes}/>
   )
 }
 

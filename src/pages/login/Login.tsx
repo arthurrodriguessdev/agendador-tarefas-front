@@ -1,6 +1,7 @@
 import './login.css'
 import { AuthenticationLayout } from '../../components/authentication/AuthenticationLayout.tsx'
 import { Button } from '../../components/Button.tsx'
+import { Link } from 'react-router-dom'
 
 export function Login(){
     return (
@@ -21,8 +22,10 @@ export function Login(){
                     </div>
                     <Button typeButton="submit">Entrar</Button>
                 </div>
-            </form>
-            
+                <span>
+                    <Link to="/auth/register/">Não tem conta? Clique aqui</Link>
+                </span>
+            </form>   
         </AuthenticationLayout>
     )
 }
