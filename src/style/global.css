@@ -73,3 +73,24 @@ body{
 .container-error-handler p{
     color: #fff;
 }
+
+/* Header */
+.header{
+    background-color: var(--background-forms-color);
+    width: 100%;
+    padding: 0px 24px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 80px;
+}
+
+.header nav{
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+    color: var(--text-black-color);
+}
+
+/* Footer */

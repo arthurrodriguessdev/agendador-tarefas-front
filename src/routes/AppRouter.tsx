@@ -13,6 +13,8 @@ export const routes = createBrowserRouter([
         path: "/auth/register/",
         element: <Register/>
     },
+
+    // Not found route
     {
         path: "*",
         element: <NotFoundHandler/>
