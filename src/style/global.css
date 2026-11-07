@@ -274,6 +274,10 @@ tbody tr:hover{
     color: var(--highlight-color);
 }
 
+.sidebar-toggle.active{
+    color: var(--highlight-color);
+}
+
 .sidebar-toggle svg{
     width: 21px;
     height: 21px;

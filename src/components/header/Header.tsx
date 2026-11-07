@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom"
 import { Bell, UserRound, LogOut, PanelLeftClose, PanelLeftOpen } from "lucide-react"
-import type { ReactNode } from "react"
 
 interface HeaderProps{
     isVisible: boolean
@@ -8,14 +7,13 @@ interface HeaderProps{
 }
 
 export function Header({ setVisibilitySideBar, isVisible }: HeaderProps){
-    let iconOpenCloseSidebar: ReactNode
-    isVisible ? iconOpenCloseSidebar = <PanelLeftClose/> : iconOpenCloseSidebar = <PanelLeftOpen/>
+    let classNameBtnSidebar = isVisible ? "sidebar-toggle active" : "sidebar-toggle"
 
     return (
         <header className="header">
             <div className="header-brand">
-                <button className="sidebar-toggle" onClick={setVisibilitySideBar}>
-                    {iconOpenCloseSidebar}
+                <button className={classNameBtnSidebar} onClick={setVisibilitySideBar}>
+                    {isVisible ? <PanelLeftClose/> : <PanelLeftOpen/>}
                 </button>
 
                 <h3>TaskMaster</h3>
