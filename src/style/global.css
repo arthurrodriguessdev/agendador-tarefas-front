@@ -162,6 +162,19 @@ tbody tr:hover{
     background-color: var(--background-secundary-color);
 }
 
+/* Layout settings */
+.app-layout {
+    display: flex;
+    min-height: 100vh;
+}
+
+.app-container {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    min-width: 0;
+}
+
 /* Main Screens */
 .main-content {
     flex: 1;
@@ -182,4 +195,35 @@ tbody tr:hover{
 .sub-header-div h1 {
     color: var(--text-primary);
     font-size: 24px;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 220px;
+    flex-shrink: 0;
+    background-color: var(--primary-color);
+    padding: 24px 16px;
+}
+
+.sidebar ul{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sidebar ul li{
+    list-style: none;
+}
+
+.sidebar ul li a {
+    display: block;
+    width: 100%;
+    color: #fff;
+    text-decoration: none;
+    padding: 8px;
+}
+
+.sidebar ul li:hover{
+    cursor: pointer;
+    background-color: color-mix(in srgb, var(--highlight-color), black 30%);
 }
