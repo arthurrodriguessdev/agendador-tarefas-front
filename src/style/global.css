@@ -88,11 +88,37 @@ body{
     min-height: 80px;
 }
 
+.header-brand{
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.header-brand h3{
+    color: var(--primary-color);
+    font-size: var(--font-size-xl);
+}
+
 .header nav{
     display: flex;
-    flex-direction: row;
-    gap: 15px;
+    align-items: center;
+    gap: 18px;
+}
+
+.header nav a{
+    display: flex;
+    align-items: center;
+    justify-content: center;
     color: var(--text-black-color);
+    text-decoration: none;
+    padding: 9px;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+}
+
+.header nav a:hover{
+    background-color: color-mix(in srgb, var(--highlight-color), transparent 90%);
+    color: var(--highlight-color);
 }
 
 /* Footer */
@@ -226,4 +252,30 @@ tbody tr:hover{
 .sidebar ul li:hover{
     cursor: pointer;
     background-color: color-mix(in srgb, var(--highlight-color), black 30%);
+}
+
+/* Sidebar toggle */
+.sidebar-toggle{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border: none;
+    border-radius: 8px;
+    background-color: transparent;
+    color: var(--primary-color);
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.sidebar-toggle:hover{
+    background-color: color-mix(in srgb, var(--highlight-color), transparent 88%);
+    color: var(--highlight-color);
+}
+
+.sidebar-toggle svg{
+    width: 21px;
+    height: 21px;
+    stroke-width: 1.8;
 }
