@@ -1,4 +1,5 @@
 import { LinkButton } from "../../components/LinkButton"
+import { getAllTasks } from "../../services/taskService.ts"
 
 export function Tasks(){
     return(
