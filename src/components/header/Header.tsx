@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { Bell, UserRound, LogOut, PanelLeftClose, PanelLeftOpen } from "lucide-react"
+import { useState } from "react"
 
 interface HeaderProps{
     isVisible: boolean
@@ -7,6 +8,7 @@ interface HeaderProps{
 }
 
 export function Header({ setVisibilitySideBar, isVisible }: HeaderProps){
+    const [isDarkModeTheme, setDarkModeTheme] = useState(false)
     let classNameBtnSidebar = isVisible ? "sidebar-toggle active" : "sidebar-toggle"
 
     return (
@@ -23,6 +25,12 @@ export function Header({ setVisibilitySideBar, isVisible }: HeaderProps){
                 <Link to=""><Bell size={22} /></Link>
                 <Link to=""><UserRound size={22} /></Link>
                 <Link to=""><LogOut size={22} /></Link>
+
+                <button type="button" onClick={()=>setDarkModeTheme(!isDarkModeTheme)}>
+                    <div className={`toggle-theme-div ${isDarkModeTheme ? "activated" : ""}`}>
+                        <div />
+                    </div>
+                </button>
             </nav>
         </header>
     )

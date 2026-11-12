@@ -351,3 +351,26 @@ tbody tr:hover{
     background-color: var(--background-warning-color);
     color: var(--text-warning-color);
 }
+
+/* Button Toggle Theme */
+.toggle-theme-div{
+    background-color: #fff;
+    width: 70px;
+    padding: 5px;
+    border-radius: 100px;
+    display: flex;
+    justify-content: flex-start;
+    transition: background-color 0.3s;
+}
+
+.toggle-theme-div div{
+    background-color: var(--primary-color);
+    border-radius: 50%;
+    width: 25px;
+    height: 25px;
+    transition: transform 0.3s;
+}
+
+.toggle-theme-div.activated div{
+    transform: translateX(35px);
+}
