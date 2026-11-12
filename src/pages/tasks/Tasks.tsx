@@ -1,7 +1,17 @@
 import { LinkButton } from "../../components/LinkButton"
-import { getAllTasks } from "../../services/taskService.ts"
+import { getAllTasks, useTasksData } from "../../services/taskService.ts"
 
 export function Tasks(){
+    const { data, isLoading, isError } = useTasksData()
+
+    const taskList = data?.map(task=>{
+        return (
+            <tr key={task.id}>
+                <td>{task.nomeTarefa}</td>
+                <td>{task.descricaoTarefa}</td>
+            </tr>
+        )})
+
     return(
         <div>
             <div className="sub-header-div">
@@ -20,29 +30,8 @@ export function Tasks(){
                             <th>Status</th>
                         </tr>
                     </thead>
-
                     <tbody>
-                        <tr>
-                            <td>teste</td>
-                            <td>teste</td>
-                            <td>teste</td>
-                            <td>teste</td>
-                            <td>teste</td>
-                        </tr>
-                        <tr>
-                            <td>teste</td>
-                            <td>teste</td>
-                            <td>teste</td>
-                            <td>teste</td>
-                            <td>teste</td>
-                        </tr>
-                        <tr>
-                            <td>teste</td>
-                            <td>teste</td>
-                            <td>teste</td>
-                            <td>teste</td>
-                            <td>teste</td>
-                        </tr>
+                        {taskList}
                     </tbody>
                 </table>
             </div>
