@@ -19,11 +19,15 @@ export async function callAPI(
         headers["Content-Type"] = "application/json"
     }
 
-    const response = await fetch(`${BASE_URL}${endpointURI}`, {
-        headers,
-        method: methodName,
-        body: body != null ? JSON.stringify(body) : null
-    })
+    let response: Response
+    setTimeout(async ()=>{
+        response = await fetch(`${BASE_URL}${endpointURI}`, {
+            headers,
+            method: methodName,
+            body: body != null ? JSON.stringify(body) : null
+        })
+    }, 1000)
+
 
     if(!response.ok){
         return handleErrors(response)

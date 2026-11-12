@@ -1,5 +1,6 @@
 import { LinkButton } from "../../components/LinkButton"
-import { getAllTasks, useTasksData } from "../../services/taskService.ts"
+import { Spinner } from "../../components/Spinner.tsx"
+import { useTasksData } from "../../services/taskService.ts"
 
 export function Tasks(){
     const { data, isLoading, isError } = useTasksData()
@@ -14,6 +15,7 @@ export function Tasks(){
 
     return(
         <div>
+            {isLoading && <Spinner/>}
             <div className="sub-header-div">
                 <h1>Tarefas</h1>
                 <LinkButton toUrl="">Nova Tarefa</LinkButton>

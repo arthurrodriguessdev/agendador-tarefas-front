@@ -8,6 +8,6 @@ export async function getAllTasks(){
 export function useTasksData(){
     return useQuery({
         queryFn: getAllTasks,
-        queryKey: ["all-tasks-data"]
+        queryKey: ["all-tasks-data"],
     })
 }
