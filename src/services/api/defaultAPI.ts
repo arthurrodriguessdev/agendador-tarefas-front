@@ -12,22 +12,18 @@ export async function callAPI(
     const headers: HeadersInit = {}
 
     if(isAuthenticated){
-        headers["Authorization"] = ""
+        headers["Authorization"] = "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJzYW50b3NAZ21haWwuY29tIiwiaWF0IjoxNzk0NTAxMzMzLCJleHAiOjE3OTQ1MDQ5MzN9.Iq7E98Vsbkn9B9gfVBg9OXywuaFBcZZntNB3A-alyozpkWWbp5UqUCLwXZ_bAh3K"
     }
 
     if(body){
         headers["Content-Type"] = "application/json"
     }
-
-    let response: Response
-    setTimeout(async ()=>{
-        response = await fetch(`${BASE_URL}${endpointURI}`, {
-            headers,
-            method: methodName,
-            body: body != null ? JSON.stringify(body) : null
-        })
-    }, 1000)
-
+        
+    const response = await fetch(`${BASE_URL}${endpointURI}`, {
+        headers,
+        method: methodName,
+        body: body != null ? JSON.stringify(body) : null
+    })
 
     if(!response.ok){
         return handleErrors(response)

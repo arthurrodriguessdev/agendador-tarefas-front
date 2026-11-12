@@ -17,11 +17,9 @@ export function MainLayout(){
 
             <div className="app-container">
                 <Header setVisibilitySideBar={setVisibilitySideBar} isVisible={sideBarIsVisible}/>
-
                 <main className="main-content">
                     <Outlet/>
                 </main>
-
                 <Footer/>
             </div>
         </div>

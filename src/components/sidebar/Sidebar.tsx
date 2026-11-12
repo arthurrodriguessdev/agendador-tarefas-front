@@ -5,7 +5,7 @@ export function Sidebar(){
         <div className="sidebar">
             <ul>
                 <li><Link to="">Início</Link></li>
-                <li><Link to="">Tarefas</Link></li>
+                <li><Link to="/tasks">Tarefas</Link></li>
             </ul>
         </div>
     )

@@ -1,0 +1,5 @@
+export enum TaskStatus{
+    PENDENTE = "PENDENTE",
+    NOTIFICADO = "NOTIFICADO",
+    CANCELADO = "CANCELADO"
+}
