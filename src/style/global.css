@@ -34,20 +34,26 @@
 
 /* Theme Dark */
 [data-theme="dark"] {
-    --primary-color: #c7d2fe;
+    --primary-color: #e2e8f0;
     --highlight-color: #818cf8;
 
-    --background-default-color: #0f172a;
-    --text-black-color: #f1f5f9;
+    --background-default-color: #0b1120;
+    --background-forms-color: #151e30;
+    --background-secundary-color: #1e293b;
 
-    --background-forms-color: #1e293b;
-    --background-secundary-color: #334155;
+    --text-black-color: #e2e8f0;
+    --text-muted-color: #94a3b8;
 
-    /* Success, Error, Info and Warning colors */
-    --background-success-color: #14532d;
-    --background-error-color: #7f1d1d;
-    --background-info-color: #1e3a8a;
-    --background-warning-color: #78350f;
+    --sidebar-background-color: #080d19;
+    --sidebar-hover-color: #1e293b;
+
+    --error-page-background-color: #080d19;
+
+    /* Success, Error, Info and Warning */
+    --background-success-color: #052e1a;
+    --background-error-color: #450a0a;
+    --background-info-color: #172554;
+    --background-warning-color: #422006;
 
     --text-success-color: #86efac;
     --text-error-color: #fca5a5;
@@ -93,7 +99,7 @@ body{
     gap: 5px;
     text-align: center;
     min-height: 100vh;
-    background-color: var(--primary-color);
+    background-color: var(--error-page-background-color, var(--primary-color));
 }
 
 .container-error-handler h1{
@@ -260,7 +266,7 @@ tbody tr:hover{
 .sidebar {
     width: 220px;
     flex-shrink: 0;
-    background-color: var(--primary-color);
+    background-color: var(--sidebar-background-color, var(--primary-color));
     padding: 24px 16px;
 }
 
@@ -284,7 +290,7 @@ tbody tr:hover{
 
 .sidebar ul li:hover{
     cursor: pointer;
-    background-color: color-mix(in srgb, var(--highlight-color), black 30%);
+    background-color: var(--sidebar-hover-color, var(--highlight-color));
 }
 
 /* Sidebar toggle */
@@ -376,8 +382,8 @@ tbody tr:hover{
 }
 
 /* Button Toggle Theme */
-.toggle-theme-div{
-    background-color: #fff;
+.toggle-theme-div {
+    background-color: var(--background-secundary-color);
     width: 70px;
     padding: 5px;
     border-radius: 100px;
@@ -386,8 +392,8 @@ tbody tr:hover{
     transition: background-color 0.3s;
 }
 
-.toggle-theme-div div{
-    background-color: var(--primary-color);
+.toggle-theme-div div {
+    background-color: var(--highlight-color);
     border-radius: 50%;
     width: 25px;
     height: 25px;

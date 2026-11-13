@@ -6,9 +6,22 @@ import { useState } from "react"
 
 export function MainLayout(){
     const [sideBarIsVisible, setSideBarIsVisible] = useState(true)
+    const [isDarkModeTheme, setDarkModeTheme] = useState(false)
     
+    // Toggle the sidebar visibility
     const setVisibilitySideBar = ()=>{
         setSideBarIsVisible(!sideBarIsVisible)
+    }
+    
+    // Toggle the mode theme
+    const setModeTheme = ()=>{
+        let newModeTheme = !isDarkModeTheme
+
+        setDarkModeTheme(newModeTheme)
+        document.documentElement.setAttribute(
+            "data-theme", 
+            newModeTheme ? "dark" : ""
+        )
     }
 
     return(
@@ -16,7 +29,12 @@ export function MainLayout(){
             {sideBarIsVisible && <Sidebar/>}
 
             <div className="app-container">
-                <Header setVisibilitySideBar={setVisibilitySideBar} isVisible={sideBarIsVisible}/>
+                <Header 
+                    setVisibilitySideBar={setVisibilitySideBar} 
+                    setModeTheme={setModeTheme} 
+                    isVisible={sideBarIsVisible} 
+                    isDarkModeTheme={isDarkModeTheme}
+                />
                 <main className="main-content">
                     <Outlet/>
                 </main>
