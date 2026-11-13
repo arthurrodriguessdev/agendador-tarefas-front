@@ -32,6 +32,29 @@
     --font-size-3xl: 2.625rem;
 }
 
+/* Theme Dark */
+[data-theme="dark"] {
+    --primary-color: #c7d2fe;
+    --highlight-color: #818cf8;
+
+    --background-default-color: #0f172a;
+    --text-black-color: #f1f5f9;
+
+    --background-forms-color: #1e293b;
+    --background-secundary-color: #334155;
+
+    /* Success, Error, Info and Warning colors */
+    --background-success-color: #14532d;
+    --background-error-color: #7f1d1d;
+    --background-info-color: #1e3a8a;
+    --background-warning-color: #78350f;
+
+    --text-success-color: #86efac;
+    --text-error-color: #fca5a5;
+    --text-info-color: #93c5fd;
+    --text-warning-color: #fcd34d;
+}
+
 body{
     min-width: 320px;
     min-height: 100vh;
@@ -229,7 +252,7 @@ tbody tr:hover{
 }
 
 .sub-header-div h1 {
-    color: var(--text-primary);
+    color: var(--text-black-color);
     font-size: 24px;
 }
 
