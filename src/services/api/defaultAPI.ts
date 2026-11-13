@@ -7,12 +7,12 @@ export async function callAPI(
     endpointURI: string, 
     isAuthenticated: boolean, 
     methodName: httpMethods,
-    body=null
+    body?: any
 ){
     const headers: HeadersInit = {}
 
     if(isAuthenticated){
-        headers["Authorization"] = "Bearer eyJhbGciOiJIUzM4NCJ9.eyJzdWIiOiJzYW50b3NAZ21haWwuY29tIiwiaWF0IjoxNzk0NTAxMzMzLCJleHAiOjE3OTQ1MDQ5MzN9.Iq7E98Vsbkn9B9gfVBg9OXywuaFBcZZntNB3A-alyozpkWWbp5UqUCLwXZ_bAh3K"
+        headers["Authorization"] = "Bearer "
     }
 
     if(body){
