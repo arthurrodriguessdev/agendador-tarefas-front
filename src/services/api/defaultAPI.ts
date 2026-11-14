@@ -18,7 +18,7 @@ export async function callAPI(
     if(body){
         headers["Content-Type"] = "application/json"
     }
-        
+
     const response = await fetch(`${BASE_URL}${endpointURI}`, {
         headers,
         method: methodName,

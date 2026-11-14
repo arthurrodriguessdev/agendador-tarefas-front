@@ -6,3 +6,5 @@ export interface Task{
     dataEvento: string,
     status: string
 }
+
+export type CreateTask = Omit<Task, "id" | "status" | "dataCriacao">

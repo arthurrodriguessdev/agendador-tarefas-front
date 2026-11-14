@@ -493,3 +493,18 @@ tbody tr:hover{
     padding: 16px 24px;
     border-top: 1px solid var(--background-forms-color);
 }
+
+/* Message Error */
+.error-message{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 16px;
+    margin-bottom: 16px;
+    border: 1px solid var(--text-error-color);
+    border-radius: 6px;
+    background-color: var(--background-error-color);
+    color: var(--text-error-color);
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+}
