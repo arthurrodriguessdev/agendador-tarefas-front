@@ -10,6 +10,10 @@ export async function createNewTask(newTask: CreateTask){
     return await callAPI("/tarefas", true, "POST", newTask)
 }
 
+export async function deleteTask(idTask: number){
+    return await callAPI(`/tarefas/${idTask}`, true, "DELETE")
+}
+
 export function useTasksData(){
     return useQuery({
         queryFn: getAllTasks,

@@ -5,9 +5,11 @@ import type { CreateTask, Task } from "../../types/Task.ts"
 import { Modal } from "../../components/Modal.tsx"
 import { useState, type SubmitEvent as ReactSubmitEvent } from "react"
 import { Button } from "../../components/Button.tsx"
-import { createNewTask } from "../../services/taskService.ts"
+import { createNewTask, deleteTask } from "../../services/taskService.ts"
 import { format } from "date-fns"
 import { QueryClient, useQueryClient } from "@tanstack/react-query"
+import { EditIcon, TrashIcon } from "lucide-react"
+import { Link } from "react-router-dom"
 
 function getClassNameStatusTaskBadge(statusTask: string):string{
     switch(statusTask){
@@ -49,12 +51,25 @@ async function handlerFormNewTask(
         queryClient.invalidateQueries({
             queryKey: ["all-tasks-data"]
         })
-        
+
         onClose()
 
     } catch(error: any){
         setErrorMessage(error.message)
     }
+}
+
+export async function TaskDelete(idTask: number, queryClient: QueryClient){
+    const deleteConfirm = confirm("Tem certeza que deseja apagar esta tarefa")
+    if(!deleteConfirm){
+        return
+    }
+
+    await deleteTask(idTask)
+    queryClient.invalidateQueries({
+        queryKey: ["all-tasks-data"]
+    })
+
 }
 
 function NewTask({ onClose }: {onClose: ()=>void}){
@@ -100,6 +115,7 @@ function NewTask({ onClose }: {onClose: ()=>void}){
 export function Tasks(){
     const { data, isLoading, isError } = useTasksData()
     const [openModalCreateTask, setOpenModalCreateTask] = useState(false)
+    const queryClient = useQueryClient()
 
     if(isLoading){
         return(<Spinner/>)
@@ -112,6 +128,20 @@ export function Tasks(){
     const taskList = data?.map((task: Task)=>{
         return (
             <tr key={task.id}>
+                <td>
+                    <div className="table-actions">
+                        <Link to={""} className="action-edit"><EditIcon/></Link>
+
+                        <button 
+                            type="button"
+                            onClick={() => TaskDelete(task.id, queryClient)}
+                            title="Excluir tarefa"
+                            className="action-delete"
+                        >
+                            <TrashIcon/>
+                        </button>
+                    </div>
+                </td>
                 <td>{task.nomeTarefa}</td>
                 <td>{task.descricaoTarefa}</td>
                 <td>{task.dataCriacao}</td>
@@ -139,6 +169,7 @@ export function Tasks(){
                 <table>
                     <thead>
                         <tr>
+                            <th>Ações</th>
                             <th>Nome</th>
                             <th>Descrição</th>
                             <th>Data de Criação</th>

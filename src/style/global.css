@@ -232,6 +232,56 @@ tbody tr:hover{
     background-color: var(--background-secundary-color);
 }
 
+/* Table Actions */
+.table-actions {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.table-actions a,
+.table-actions button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border: 1px solid transparent;
+    border-radius: 7px;
+    background-color: transparent;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+/* -> Edit Action */
+.table-actions .action-edit {
+    color: var(--highlight-color);
+}
+
+.table-actions .action-edit:hover {
+    background-color: color-mix(
+        in srgb, var(--highlight-color), transparent 88%
+    );
+}
+
+/* -> Delete Action */
+.table-actions .action-delete {
+    color: var(--text-error-color);
+}
+
+.table-actions .action-delete:hover {
+    background-color: color-mix(
+        in srgb, var(--text-error-color), transparent 88%
+    );
+}
+
+/* Icons Actions */
+.table-actions svg {
+    width: 18px;
+    height: 18px;
+    stroke-width: 2;
+}
+
 /* Layout settings */
 .app-layout {
     display: flex;
