@@ -2,12 +2,26 @@ import { Outlet } from "react-router-dom"
 import { Header } from "../components/header/Header"
 import { Footer } from "../components/footer/Footer"
 import { Sidebar } from "../components/sidebar/Sidebar"
-import { useState } from "react"
+import { useEffect, useState } from "react"
+import { setLocalStorage, getValueLocalStorage } from "../services/utilities.ts"
+
+/**
+ * This function receive one param that will control mode theme
+ * @param active - if true, dark mode is actived
+ */
+function controlDarkMode(active?: boolean){
+    const lightOrDark = active ? "dark" : ""
+    document.documentElement.setAttribute("data-theme", lightOrDark)
+}
 
 export function MainLayout(){
     const [sideBarIsVisible, setSideBarIsVisible] = useState(true)
-    const [isDarkModeTheme, setDarkModeTheme] = useState(false)
-    
+    const [isDarkModeTheme, setDarkModeTheme] = useState(getValueLocalStorage("themeMode") === "dark")
+
+    useEffect(()=>{
+        controlDarkMode(isDarkModeTheme)
+    }, [])
+
     // Toggle the sidebar visibility
     const setVisibilitySideBar = ()=>{
         setSideBarIsVisible(!sideBarIsVisible)
@@ -18,10 +32,16 @@ export function MainLayout(){
         let newModeTheme = !isDarkModeTheme
 
         setDarkModeTheme(newModeTheme)
-        document.documentElement.setAttribute(
-            "data-theme", 
-            newModeTheme ? "dark" : ""
-        )
+
+        // Storage of theme
+        if(newModeTheme){
+            controlDarkMode(true)
+            setLocalStorage("themeMode", "dark")
+
+        } else{
+            controlDarkMode(false)
+            setLocalStorage("themeMode", "light")
+        }
     }
 
     return(

@@ -4,12 +4,17 @@ import { Register } from "../pages/register/Register.tsx"
 import { NotFoundHandler } from "../pages/handlers/Handlers.tsx"
 import { MainLayout } from "../layouts/MainLayout.tsx"
 import { Tasks } from "../pages/tasks/Tasks.tsx"
+import { Index } from "../pages/home/Index.tsx"
 
 // Routes of project
 export const routes = createBrowserRouter([
     {
         element: <MainLayout/>,
         children: [
+            {
+                path: "/",
+                element: <Index/>
+            },
             {
                 path: "/tasks/",
                 element: <Tasks/>

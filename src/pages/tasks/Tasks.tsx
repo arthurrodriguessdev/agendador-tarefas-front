@@ -8,7 +8,7 @@ import { Button } from "../../components/Button.tsx"
 import { createNewTask, deleteTask } from "../../services/taskService.ts"
 import { format } from "date-fns"
 import { QueryClient, useQueryClient } from "@tanstack/react-query"
-import { EditIcon, TrashIcon } from "lucide-react"
+import { EditIcon, TrashIcon, PlusIcon } from "lucide-react"
 import { Link } from "react-router-dom"
 
 function getClassNameStatusTaskBadge(statusTask: string):string{
@@ -161,7 +161,7 @@ export function Tasks(){
                 <Button 
                     className="btn-default add" 
                     onClick={()=> setOpenModalCreateTask(true)}>
-                        Nova Tarefa
+                        <PlusIcon/> Nova Tarefa
                 </Button>
             </div>
 

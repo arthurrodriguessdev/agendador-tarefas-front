@@ -1,0 +1,11 @@
+.date-span{
+    display: inline-flex;
+    align-items: center;
+    padding: 6px 12px;
+    margin-bottom: 10px;
+    background-color: var(--background-forms-color);
+    color: var(--highlight-color);
+    font-size: var(--font-size-sm);
+    border: 1px solid var(--background-secundary-color);
+    border-radius: 5px;
+}
