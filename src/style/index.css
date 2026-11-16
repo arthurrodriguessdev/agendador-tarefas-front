@@ -9,3 +9,75 @@
     border: 1px solid var(--background-secundary-color);
     border-radius: 5px;
 }
+
+.task-cards{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+    margin-bottom: 24px;
+}
+
+.task-card{
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 24px;
+    background-color: var(--background-forms-color);
+    border: 1px solid var(--background-secundary-color);
+    border-radius: 12px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.task-card:hover{
+    transform: translateY(-3px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+}
+
+.task-card-icon{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 48px;
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+}
+
+.task-card-icon svg{
+    width: 24px;
+    height: 24px;
+    stroke-width: 2;
+}
+
+.task-card-icon.total{
+    background-color: var(--background-info-color);
+    color: var(--text-info-color);
+}
+
+.task-card-icon.pending{
+    background-color: var(--background-warning-color);
+    color: var(--text-warning-color);
+}
+
+.task-card-icon.notified{
+    background-color: var(--background-success-color);
+    color: var(--text-success-color);
+}
+
+.task-card-icon.cancelled{
+    background-color: var(--background-error-color);
+    color: var(--text-error-color);
+}
+
+.task-card p{
+    font-size: var(--font-size-2xl);
+    font-weight: 700;
+    color: var(--text-black-color);
+    margin-bottom: 4px;
+}
+
+.task-card h3{
+    font-size: var(--font-size-sm);
+    font-weight: 500;
+    color: var(--text-muted-color, #64748b);
+}

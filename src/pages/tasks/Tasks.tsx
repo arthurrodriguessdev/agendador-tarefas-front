@@ -59,8 +59,9 @@ async function handlerFormNewTask(
     }
 }
 
-export async function TaskDelete(idTask: number, queryClient: QueryClient){
-    const deleteConfirm = confirm("Tem certeza que deseja apagar esta tarefa")
+export async function TaskDelete(idTask: number, queryClient: QueryClient, taskName: string){
+    const confirmMessage = `Tem certeza que deseja apagar a tarefa: ${taskName}?`
+    const deleteConfirm = confirm(confirmMessage)
     if(!deleteConfirm){
         return
     }
@@ -69,7 +70,6 @@ export async function TaskDelete(idTask: number, queryClient: QueryClient){
     queryClient.invalidateQueries({
         queryKey: ["all-tasks-data"]
     })
-
 }
 
 function NewTask({ onClose }: {onClose: ()=>void}){
@@ -134,7 +134,7 @@ export function Tasks(){
 
                         <button 
                             type="button"
-                            onClick={() => TaskDelete(task.id, queryClient)}
+                            onClick={() => TaskDelete(task.id, queryClient, task.nomeTarefa)}
                             title="Excluir tarefa"
                             className="action-delete"
                         >
