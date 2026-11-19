@@ -71,6 +71,11 @@ body{
 }
 
 /* Buttons */
+.btn-reset{
+    all: unset;
+    cursor: pointer;
+}
+
 .btn-default{
     display: inline-flex;
     align-items: center;

@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import { Bell, UserRound, LogOut, PanelLeftClose, PanelLeftOpen } from "lucide-react"
+import { Button } from "../Button.tsx"
 
 interface HeaderProps{
     isVisible: boolean
@@ -26,11 +27,11 @@ export function Header({ setVisibilitySideBar, setModeTheme, isVisible, isDarkMo
                 <Link to=""><UserRound size={22} /></Link>
                 <Link to=""><LogOut size={22} /></Link>
 
-                <button type="button" onClick={setModeTheme}>
+                <Button onClick={setModeTheme} typeButton="button" className="btn-reset">
                     <div className={`toggle-theme-div ${isDarkModeTheme ? "activated" : ""}`}>
                         <div />
                     </div>
-                </button>
+                </Button>
             </nav>
         </header>
     )

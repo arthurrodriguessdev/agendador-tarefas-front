@@ -3,9 +3,19 @@ import { useTasksData } from "../../services/taskService"
 import type { Task } from "../../types/Task.ts"
 import { TaskStatus } from "../../types/enums/tasksEnum.ts"
 import { ClipboardList, Clock, Bell, CircleX } from "lucide-react"
+import { stringToISOFormat } from "../../services/utilities/dateUtilities.ts"
+import { Spinner } from "../../components/Spinner.tsx"
 
 export function Index(){
-    const { data } = useTasksData()
+    const { data, isLoading, isError } = useTasksData()
+
+    if(isLoading){
+        return(<Spinner/>)
+    }
+
+    if(isError){
+        return( <h1>Erro ao fazer a requisição</h1> )
+    }
 
     const listPendingTask: Task[] = []
     const listNotifiedTask: Task[] = []
@@ -21,6 +31,39 @@ export function Index(){
             listNotifiedTask.push(task)
         }
     });
+
+    // Ordering pending tasks by 'dataEvento'
+    const listPendingSorted = listPendingTask?.toSorted((nowTask, proxTask) => {
+        return Date.parse(stringToISOFormat(nowTask.dataEvento)) -
+            Date.parse(stringToISOFormat(proxTask.dataEvento));
+    });
+
+    const nextTasksComponentHeader = (
+        <div className="next-tasks-header">
+            <h2>Próximas Notificações</h2>
+            <p>Confira os próximos compromissos agendados.</p>
+        </div>
+    )
+
+    let taskCont = 0
+    const nextTasksComponentBody = listPendingSorted?.map((task: Task)=>{
+        if(taskCont < 3){
+            const component = (
+                <div className="next-tasks-body" key={task.id}>
+                    <div className="nome-descricao-task">
+                        <p>{task.nomeTarefa}</p>
+                        <p>{task.descricaoTarefa}</p>
+                    </div>
+
+                    <p>Evento: {task.dataEvento}</p>
+                    <p>Notificação em: COLOCAR DPS</p>
+                </div>
+            )
+            
+            taskCont++
+            return component
+        }
+    })
 
     const totalTasks = data ? data?.length : 0
     const dateNow = format(Date.now(), "EEEE, MMMM d")
@@ -67,6 +110,12 @@ export function Index(){
                         <h3>Canceladas</h3>
                     </div>
                 </div>
+            </div>
+            
+            {/* Section Next Tasks */}
+            <div className="next-tasks-div">
+                {nextTasksComponentHeader}
+                {nextTasksComponentBody}
             </div>
         </div>
     )

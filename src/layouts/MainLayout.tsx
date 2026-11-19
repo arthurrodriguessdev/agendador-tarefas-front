@@ -3,7 +3,7 @@ import { Header } from "../components/header/Header"
 import { Footer } from "../components/footer/Footer"
 import { Sidebar } from "../components/sidebar/Sidebar"
 import { useEffect, useState } from "react"
-import { setLocalStorage, getValueLocalStorage } from "../services/utilities.ts"
+import { setLocalStorage, getValueLocalStorage } from "../services/utilities/utilities.ts"
 
 /**
  * This function receive one param that will control mode theme
